@@ -1,0 +1,46 @@
+# PROMPT DE IMPLEMENTAÇÃO LOVABLE: APP DE FINANÇAS ORBI - MVP (V2.0 FINAL)
+
+## 1. INSTRUÇÃO CRÍTICA: FIDELIDADE AO DESIGN E UX
+
+**ATENÇÃO, LOVABLE:** O código gerado DEVE replicar FIELMENTE o layout, a hierarquia visual e a estrutura de navegação definidos no protótipo do Figma. Esta instrução é MANDATÓRIA para o MVP.
+
+* **LINK DO FIGMA (BASE ÚNICA DE DESIGN):** https://www.figma.com/design/DvCKaJ0QnnX4blJTYaTMMB/Orbi?node-id=21-92&t=tmnhVXoLEl0OqrB4-1
+* **ESTÉTICA:** Aplicar o estilo **Neumórfico (Neumorphism / Soft UI)** em todos os componentes, respeitando as cores e a tipografia do Figma.
+* **Mascote Orbi:** A imagem do mascote (robozinho) deve ser incluída no design (asset do Figma) e posicionada de forma proeminente no **Quadro Geral (Dashboard)** e na tela de **Chat**, funcionando como o **Agente Financeiro**.
+* **UX / ACESSIBILIDADE:** O código do Front-end deve seguir os princípios de **Design Universal**, com foco em alto contraste, legibilidade e usabilidade intuitiva.
+
+## 2. ESTRUTURA DE TELAS E NAVEGAÇÃO (ARQUITETURA DE INFORMAÇÃO)
+
+A navegação principal do aplicativo (Tab Bar/Menu) deve OBRIGATORIAMENTE conter e implementar as seguintes telas separadas para uma correta gestão financeira:
+
+1.  **Quadro Geral (Dashboard):** Visão consolidada de Receitas, Despesas Totais, Saldo e Metas.
+2.  **Receitas:** Gestão e visualização detalhada das entradas de dinheiro.
+3.  **Despesas Fixas:** Gestão e acompanhamento das despesas recorrentes e obrigatórias.
+4.  **Despesas Variáveis:** Gestão e análise dos gastos flexíveis e de consumo.
+5.  **Investimentos:** Tela para acompanhamento de aportes e rendimentos, separada do fluxo de gastos.
+6.  **Relatórios / Gráficos:** Análise visual de dados.
+
+## 3. MODELO DE DADOS (BACKEND)
+
+Crie as seguintes tabelas e seus relacionamentos:
+
+* **Tabela `Users`:** `id`, `nome`, `email`, `senha_hash`.
+* **Tabela `Categories`:** `id`, `nome_categoria` (Texto), `tipo` (ENUM: 'RECEITA', 'DESPESA_FIXA', 'DESPESA_VARIAVEL', 'INVESTIMENTO').
+    * *Seed (Carga Inicial):* Alimentação, Moradia, Transporte, Saúde, Lazer, Educação, Salário, Renda Extra, Investimentos, Dívidas.
+* **Tabela `Transactions`:** `id`, `user_id` (FK), `category_id` (FK), `valor` (Decimal), `data_transacao` (Data/Hora), `descricao` (Texto original do comando de voz, Ex: "gastei 50 reais na padaria").
+* **Tabela `Goals`:** `id`, `user_id` (FK), `nome_meta`, `valor_alvo` (Decimal), `valor_atual` (Decimal), `data_limite` (Data).
+
+## 4. LÓGICA DE NEGÓCIO E INTELIGÊNCIA ARTIFICIAL
+
+### 4.1. Função Crítica: Processamento de Transação por Voz/NLP
+
+Crie uma função de *backend* chamada `process_voice_transaction(text_input, user_id)`:
+1.  **Processamento de IA:** Utilizar NLP para extrair o **`valor`**, identificar o **`tipo`** (usando o ENUM da Tabela Categories) e mapear a **`categoria`** (Ex: "padaria" → Alimentação).
+2.  **Ação:** Inserir os dados processados na tabela `Transactions`.
+3.  **Feedback do Orbi:** Retornar uma confirmação conversacional e educativa em Português.
+
+### 4.2. Relatórios e Visualização de Dados
+
+Implemente na tela **Relatórios / Gráficos** a funcionalidade de visualização de gastos por categoria nos formatos:
+* **Gráfico de Pizza (Pie Chart):** Para proporção percentual.
+* **Gráfico de Barras (Horizontal Bar Chart):** Para comparação de valores absolutos.
