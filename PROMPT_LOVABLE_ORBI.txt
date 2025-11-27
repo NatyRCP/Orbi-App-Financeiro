@@ -1,12 +1,10 @@
-# PROMPT DE IMPLEMENTAÇÃO LOVABLE: APP DE FINANÇAS ORBI - MVP (V2.0 FINAL)
+# PROMPT DE IMPLEMENTAÇÃO LOVABLE: APP DE FINANÇAS ORBI - MVP (V3.0 - REVISADO)
 
-## 1. INSTRUÇÃO CRÍTICA: FIDELIDADE AO DESIGN E UX
+## 1. INSTRUÇÃO CRÍTICA: GERAÇÃO DE LAYOUT DO ZERO
 
-**ATENÇÃO, LOVABLE:** O código gerado DEVE replicar FIELMENTE o layout, a hierarquia visual e a estrutura de navegação definidos no protótipo do Figma. Esta instrução é MANDATÓRIA para o MVP.
+**ATENÇÃO, LOVABLE:** O layout DEVE ser gerado do zero pelo motor de IA, abandonando qualquer referência ou tentativa de leitura do Figma. A arquitetura de telas (item 2) e o estilo visual são obrigatórios.
 
-* **LINK DO FIGMA (BASE ÚNICA DE DESIGN):** https://www.figma.com/design/DvCKaJ0QnnX4blJTYaTMMB/Orbi?node-id=21-92&t=tmnhVXoLEl0OqrB4-1
-* **ESTÉTICA:** Aplicar o estilo **Neumórfico (Neumorphism / Soft UI)** em todos os componentes, respeitando as cores e a tipografia do Figma.
-* **Mascote Orbi:** A imagem do mascote (robozinho) deve ser incluída no design (asset do Figma) e posicionada de forma proeminente no **Quadro Geral (Dashboard)** e na tela de **Chat**, funcionando como o **Agente Financeiro**.
+* **ESTILO VISUAL:** O estilo **DEVE SER O NEUMÓRFICO (Neumorphism / Soft UI)** para todos os botões, cards e elementos da interface. Utilize cores pastel, tons suaves e sombras para simular profundidade (design 3D suave).
 * **UX / ACESSIBILIDADE:** O código do Front-end deve seguir os princípios de **Design Universal**, com foco em alto contraste, legibilidade e usabilidade intuitiva.
 
 ## 2. ESTRUTURA DE TELAS E NAVEGAÇÃO (ARQUITETURA DE INFORMAÇÃO)
@@ -27,7 +25,7 @@ Crie as seguintes tabelas e seus relacionamentos:
 * **Tabela `Users`:** `id`, `nome`, `email`, `senha_hash`.
 * **Tabela `Categories`:** `id`, `nome_categoria` (Texto), `tipo` (ENUM: 'RECEITA', 'DESPESA_FIXA', 'DESPESA_VARIAVEL', 'INVESTIMENTO').
     * *Seed (Carga Inicial):* Alimentação, Moradia, Transporte, Saúde, Lazer, Educação, Salário, Renda Extra, Investimentos, Dívidas.
-* **Tabela `Transactions`:** `id`, `user_id` (FK), `category_id` (FK), `valor` (Decimal), `data_transacao` (Data/Hora), `descricao` (Texto original do comando de voz, Ex: "gastei 50 reais na padaria").
+* **Tabela `Transactions`:** `id`, `user_id` (FK), `category_id` (FK), `valor` (Decimal), `data_transacao` (Data/Hora), `descricao` (Texto original do comando, Ex: "gastei 50 reais na padaria").
 * **Tabela `Goals`:** `id`, `user_id` (FK), `nome_meta`, `valor_alvo` (Decimal), `valor_atual` (Decimal), `data_limite` (Data).
 
 ## 4. LÓGICA DE NEGÓCIO E INTELIGÊNCIA ARTIFICIAL
